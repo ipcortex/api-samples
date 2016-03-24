@@ -1,0 +1,87 @@
+<html>
+<head>
+	<link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
+	<link href='https://fonts.googleapis.com/icon?family=Material+Icons' rel='stylesheet' type='text/css'>
+	<script src="https://pabx.hostname/cinclude/adapter.js"></script>
+	<script src="https://pabx.hostname/api/api.js"></script>
+	<style>
+		body {
+			font-family:			'Montserrat', sans-serif;
+			font-size:			12px;
+		}
+
+		video {
+			width:				640px;
+			height:				480px;
+			overflow:			hidden;
+			border-radius:			10px;
+			border:				1px solid rgba(20, 20, 20, 1);
+			margin:				10px;
+		}
+
+		i {
+			float:				right;
+			line-height:			24px;
+			color:				green;
+			cursor:				pointer;
+		}
+
+		#contacts {
+			position:			fixed;
+			top:				0px;
+			right:				0px;
+			background:			rgba(230, 230, 230, 1);
+			border-bottom-left-radius:	10px;
+			overflow:			hidden;
+		}
+
+		.feed {
+			background:			rgba(240, 240, 240, 1);
+			padding:			10px;
+			margin:				10px;
+			border-radius:			10px;
+			float:				left;
+		}
+
+		.contact, .contacts-title {
+			padding:			0px 15px 5px 15px;
+			float:				left;
+			clear:				both;
+			width:				250px;
+			height:				24px;
+			line-height:			24px;
+		}
+
+		.contacts-title {
+			margin-bottom:			5px;
+			padding:			5px 15px 5px 15px;
+			background:			rgba(210, 210, 210, 1);
+		}
+
+		.invite {
+			top:				50%;
+			left:				50%;
+			height:				24px;
+			line-height:			24px;
+			position:			absolute;
+			width:				260px;
+			background:			rgba(40, 40, 40, 1);
+			color:				rgba(250, 250, 250, 1);
+			padding:			10px;
+			border-radius:			10px;
+			padding:			5px 15px 5px 15px;
+			-webkit-transform:		translateY(-50%)
+							translateX(-50%);
+			transform:			translateY(-50%)
+							translateX(-50%);
+		}
+	</style>
+	<title>IPC Video Client</title>
+</head>
+<body>
+	<div id="contacts">
+		<div class="contacts-title">Contacts</div>
+	</div>
+	<script src="video-client.js"></script>
+</body>
+</html>

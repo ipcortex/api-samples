@@ -1,0 +1,24 @@
+<!doctype html>
+<html>
+<head>
+	<title>IPC Dialler</title>
+	<link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
+	<script src="https://pabx.hostname/api/wrapper_kphone.whtm"></script>
+	<style>
+		body {
+			font-family: 'Montserrat', sans-serif;
+			font-size: 12px;
+		}
+		video {
+			display: none;
+		}
+	</style>
+</head>
+<body>
+	<video id="phone" autoplay></video>
+	<input type="text" id="number" size="20" placeholder="Number to dial"></input>
+	<button type="button" id="call">Call</button>
+	<button type="button" id="hangup">Hangup</button>
+	<script src="calling.js"></script>
+</body>
+</html>

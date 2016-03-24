@@ -1,0 +1,90 @@
+<!doctype html>
+<html>
+<head>
+	<title>IPC Dialler</title>
+	<link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
+	<link href='https://fonts.googleapis.com/icon?family=Material+Icons' rel='stylesheet' type='text/css'>
+	<script src="https://pabx.hostname/api/wrapper_kphone.whtm"></script>
+	<style>
+		body {
+			font-family: 'Montserrat', sans-serif;
+			font-size: 12px;
+		}
+		video {
+			display: none;
+		}
+                #calls {
+                        background: rgba(230, 230, 230, 1);
+                        border-bottom-right-radius: 10px;
+                        overflow: hidden;
+                }
+                .call, .calls-title {
+                        padding: 0px 15px 5px 15px;
+                        float: left;
+                        clear: both;
+                        width: 350px;
+                        height: 24px;
+                        line-height: 24px;
+                        overflow: hidden;
+                }
+                .calls-title {
+                        margin-bottom: 5px;
+                        padding: 5px 15px 5px 15px;
+                        background: rgba(210, 210, 210, 1);
+                }
+		.call-ring, .call-talk, .call-hold, .call-hangup {
+			border: 1px gray solid;
+			border-radius: 3px;
+			cursor: pointer;
+		}
+                .call-ring {
+                        float: right;
+                        line-height: 24px;
+                        color: green;
+			animation: pulse 1s infinite;
+                }
+                .call-talk {
+                        float: right;
+                        line-height: 24px;
+                        color: green;
+                }
+                .call-hold {
+                        float: right;
+                        line-height: 24px;
+                        color: blue;
+                }
+                .call-hangup {
+                        float: right;
+                        line-height: 24px;
+                        color: red;
+                }
+		@keyframes pulse {
+			0% {
+				opacity: 0.1;
+			}
+			50% {
+				opacity: 1.0;
+			}
+			100% {
+				opacity: 0.1;
+			}
+		}
+	</style>
+</head>
+<body>
+	<video id="phone" autoplay></video>
+	<div id="calls">
+		<div class="calls-title">Calls</div>
+		<input type="text" id="number" size="20" placeholder="Number to dial"></input>
+		<button type="button" id="call">Call</button>
+		<div class="call" style="display: none" id="clone">
+			<span>Caller name here</span>
+			<i class="material-icons call-hangup">call_end</i>
+			<i class="material-icons call-hold">phone_paused</i>
+			<i class="material-icons call-talk">call</i>
+			<i class="material-icons call-ring">ring_volume</i>
+		</div>
+	</div>
+	<script src="call-manage.js"></script>
+</body>
+</html>

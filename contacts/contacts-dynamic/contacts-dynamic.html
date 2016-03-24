@@ -1,0 +1,48 @@
+<!doctype html>
+<html>
+<head>
+	<title>IPC Dynamic Contacts List</title>
+	<link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
+	<link href='https://fonts.googleapis.com/icon?family=Material+Icons' rel='stylesheet' type='text/css'>
+	<script src="https://pabx.hostname/api/api.js"></script>
+	<style>
+		body {
+			font-family: 'Montserrat', sans-serif;
+			font-size: 12px;
+		}
+		ul {
+			list-style-type: none;
+			margin: 0;
+			padding: 0;
+		}
+		li {
+			font-size: 20px;
+			line-height: 30px;
+			border-bottom: 1px solid #ccc;
+		}
+		li:last-child {
+			border: none;
+		}
+		li a {
+			text-decoration: none;
+			color: #000;
+			display: block;
+			width: 800px;
+			transition: font-size 0.3s ease, background-color 0.3s ease;
+		}
+		li a:hover {
+			font-size: 30px;
+			background: #f6f6f6;
+		}
+		i {
+			font-size: 25px;
+			color: blue;
+		}
+	</style>
+</head>
+<body>
+	<ul id="list">
+	</ul>
+	<script src="contacts-dynamic.js"></script>
+</body>
+</html>
