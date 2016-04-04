@@ -1,0 +1,87 @@
+<html>
+<head>
+	<link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
+	<link href='https://fonts.googleapis.com/icon?family=Material+Icons' rel='stylesheet' type='text/css'>
+	<script src="https://pabx.hostname/api/api.js"></script>
+	<style>
+		body {
+			font-family: 'Montserrat', sans-serif;
+			font-size: 12px;
+		}
+		#contacts {
+			position: fixed;
+			top: 0px;
+			right: 0px;
+			background: rgba(230, 230, 230, 1);
+			border-bottom-left-radius: 10px;
+			overflow: hidden;
+		}
+		.contact, .contacts-title, .contact-external {
+			padding: 0px 15px 5px 15px;
+			float: left;
+			clear: both;
+			width: 250px;
+			height: 24px;
+			line-height: 24px;
+		}
+		.contact-external {
+			height: 72px;
+		}
+		.contacts-title {
+			margin-bottom: 5px;
+			padding: 5px 15px 5px 15px;
+			background: rgba(210, 210, 210, 1);
+		}
+		.contact-offer {
+			float: right;
+			line-height: 24px;
+			color: green;
+		}
+		.chatroom {
+			width: 25%;
+			min-width: 250px;
+			float: left;
+			margin: 15px;
+			overflow: hidden;
+		}
+		.chattitle {
+			padding: 0px 15px 5px 15px;
+			line-height: 24px;
+		}
+		.chatinput, input, textarea {
+			width: 100%;
+		}
+		.chatclose {
+			width: initial;
+			float: right;
+		}
+		textarea {
+			font-size: 10px;
+			color: #444;
+		}
+	</style>
+	<title>IPC Chat Client</title>
+</head>
+<body>
+	<div id="contacts">
+		<div class="contacts-title">Contacts</div>
+		<div class="contact-external">
+			<input type="text" id="extname" name="extname" value="" placeholder="Enter name here">
+			<input type="text" id="extaddress" name="extaddress" value="" placeholder="Enter email or mobile here">
+			<input type="submit" id="extinvite" name="extinvite" value="Invite">
+		</div>
+	</div>
+	<div class="chatroom" style="display: none;" id="clone">
+		<input class="chatclose" type="submit" value="Close"/>
+		<div class="chattitle">
+			Room Name
+		</div>
+		<textarea rows="20"></textarea>
+		<div class="chatinput">
+			<input type="text" size="30" placeholder="Enter text to chat"/>
+			<input type="submit" value="Send"/>
+		</div>
+	</div>
+	<script src="chat-external.js"></script>
+</body>
+</html>
