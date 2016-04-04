@@ -1,0 +1,89 @@
+<html>
+<head>
+	<link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
+	<link href='https://fonts.googleapis.com/icon?family=Material+Icons' rel='stylesheet' type='text/css'>
+	<script src="https://pabx.hostname/cinclude/adapter.js"></script>
+	<script src="https://pabx.hostname/api/api.js"></script>
+	<style>
+		body {
+			font-family:			'Montserrat', sans-serif;
+			font-size:			12px;
+		}
+
+		video {
+			width:				640px;
+			height:				480px;
+			overflow:			hidden;
+			border-radius:			10px;
+			border:				1px solid rgba(20, 20, 20, 1);
+			margin:				10px;
+		}
+
+		i {
+			float:				right;
+			line-height:			24px;
+			color:				green;
+			cursor:				pointer;
+		}
+
+		.disabled {
+			opacity:			0.3;
+			pointer-events:			none;
+		}
+
+		#contacts {
+			position:			fixed;
+			top:				0px;
+			right:				0px;
+			background:			rgba(230, 230, 230, 1);
+			border-bottom-left-radius:	10px;
+			overflow:			hidden;
+		}
+
+		.contact, .contacts-title {
+			padding:			0px 15px 5px 15px;
+			float:				left;
+			clear:				both;
+			width:				330px;
+			line-height:			24px;
+		}
+
+		.contacts-title {
+			height:				24px;
+			margin-bottom:			5px;
+			padding:			5px 15px 5px 15px;
+			background:			rgba(210, 210, 210, 1);
+		}
+
+		.contact {
+			height:				45px;
+			position:			relative;
+		}
+
+		.progress {
+			top:				0px;
+			left:				0px;
+			height:				100%;
+			position:			absolute;
+			background:			rgba(0, 255, 0, 0.3);
+			z-index:			-1;
+		}
+	</style>
+	<title>IPC File Client</title>
+</head>
+<body>
+	<div id="contacts">
+		<div class="contacts-title">Contacts</div>
+	</div>
+	<div class="contact" id="contact-clone">
+		<div class="progress"></div>
+		<input class="file-input" type="file">
+		<i class="material-icons file-send disabled">file_upload</i>
+		<i class="material-icons file-download disabled">
+			file_download
+			<a class="file-link" style="display: none;"></a>
+		</i>
+	</div>
+	<script src="file-client.js"></script>
+</body>
+</html>
