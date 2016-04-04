@@ -4,14 +4,14 @@ IPCortex.PBX.Auth.setHost('https://pabx.hostname');
 IPCortex.PBX.Auth.login().then(
 	function() {
 		console.log(TAG, 'Login successful');
-		/* Fetch the data from the PABX withou live updates. */
-		IPCortex.PBX.fetchData().then(
+		/* Get the API to start collecting data */
+		IPCortex.PBX.startFeed().then(
 			function() {
-				console.log(TAG, 'Data fetched');
+				console.log(TAG, 'Live data feed started');
 				runApp();
 			},
 			function() {
-				console.log(TAG, 'Data fetch failed');
+				console.log(TAG, 'Live data feed failed');
 			}
 		);
 	},
