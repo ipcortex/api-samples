@@ -2,21 +2,12 @@
 <head>
 	<link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
 	<link href='https://fonts.googleapis.com/icon?family=Material+Icons' rel='stylesheet' type='text/css'>
-	<script src="https://pabx.hostname/cinclude/adapter.js"></script>
-	<script src="https://pabx.hostname/api/api.js"></script>
+	<script src="https://dev.webrtc.nu/cinclude/adapter.js"></script>
+	<script src="https://dev.webrtc.nu/api/api.js"></script>
 	<style>
 		body {
 			font-family:			'Montserrat', sans-serif;
 			font-size:			12px;
-		}
-
-		video {
-			width:				640px;
-			height:				480px;
-			overflow:			hidden;
-			border-radius:			10px;
-			border:				1px solid rgba(20, 20, 20, 1);
-			margin:				10px;
 		}
 
 		i {
@@ -75,14 +66,16 @@
 	<div id="contacts">
 		<div class="contacts-title">Contacts</div>
 	</div>
-	<div class="contact" id="contact-clone">
-		<div class="progress"></div>
-		<input class="file-input" type="file">
-		<i class="material-icons file-send disabled">file_upload</i>
-		<i class="material-icons file-download disabled">
-			file_download
-			<a class="file-link" style="display: none;"></a>
-		</i>
+	<div style="display: none;">
+		<div class="contact" id="contact-clone">
+			<div class="progress"></div>
+			<input class="file-input" type="file">
+			<i class="material-icons file-send disabled">file_upload</i>
+			<i class="material-icons file-download disabled">
+				file_download
+				<a class="file-link" style="display: none;"></a>
+			</i>
+		</div>
 	</div>
 	<script src="file-client.js"></script>
 </body>

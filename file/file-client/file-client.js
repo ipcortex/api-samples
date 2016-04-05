@@ -2,10 +2,12 @@ var rooms = {};
 var media = {};
 var accepted = {};
 var TAG = 'IPC-VIDEO-CLIENT:';
-var host = 'https://pabx.hostname';
+var host = 'https://dev.webrtc.nu';
 IPCortex.PBX.Auth.setHost(host);
 
 function processFile(file) {
+	/* If we have acknowledged (the browser has the capabilities) a file transfer request,
+	   automatically accept the request */
 	if ( file.state == 'acknowledged' && file.party == 'receive' )
 		file.accept();
 	for ( cid in file.progress ) {
@@ -13,14 +15,16 @@ function processFile(file) {
 		if ( progress )
 			progress.style.width = file.progress[cid].progress + '%';
 		if ( file.progress[cid].status == 'complete' ) {
-			progress.style.width = '0%';
+			if ( progress )
+				progress.style.width = '0%';
 			if ( file.party == 'receive' ) {
+				/* Set the link using the Blob supplied by the File instance */
 				var link = document.querySelector('#c' + cid + ' .file-link');
 				var download = document.querySelector('#c' + cid + ' .file-download');
 				download.className = 'material-icons file-download';
 				var url = window.URL.createObjectURL(file.file);
-				link.href = url;
 				link.download = file.label;
+				link.href = url;
 			}
 		}
 	}
@@ -40,10 +44,12 @@ function processContact(contact) {
 	}
 	/* Create online contact */
 	if ( contact.canChat ) {
+		/* Clone a pre-built template to reduce DOM faffige */
 		var clone = document.getElementById('contact-clone').cloneNode(true);
 		clone.id = 'c' + contact.cID;
 		clone.firstChild.nodeValue = contact.name;
 		document.getElementById('contacts').appendChild(clone);
+		/* Some nodes have an unused class to make them easier to find */
 		var send = clone.querySelector('.file-send');
 		var link = clone.querySelector('.file-link');
 		var input = clone.querySelector('.file-input');
@@ -58,18 +64,25 @@ function processContact(contact) {
 		);
 		send.addEventListener('click',
 			function() {
+				/* Check for a room to use for file transfer negotiation */
 				for ( var roomID in rooms ) {
 					if ( rooms[roomID].cID != contact.cID )
 						continue;
 					rooms[roomID].sendFile(input.files[0]).addListener('update', processFile);
 					return;
 				}
+				/* No existing room, store file handle and open a room */ 
 				media = {cID: contact.cID, file: input.files[0]};
 				contact.chat();
 			}
 		);
 		download.addEventListener('click',
 			function() {
+				setTimeout(
+					function() {
+						window.URL.revokeObjectURL(link.href);
+					},
+				100);
 				download.className = 'material-icons file-download disabled';
 				link.click();
 			}
@@ -104,8 +117,8 @@ function startTask() {
 					   send the stored file */
 					if ( room.cID == media.cID && media.file ) {
 						console.log(TAG, 'New room, starting video chat');
-						/* Listen for updates on the Av instance */
-						room.sendFile(input.files[0]).addListener('update', processFile);
+						/* Listen for updates on the File instance */
+						room.sendFile(media.file).addListener('update', processFile);
 						media = {};
 					}
 					rooms[room.roomID] = room;
