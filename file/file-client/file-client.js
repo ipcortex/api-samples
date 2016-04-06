@@ -2,7 +2,7 @@ var rooms = {};
 var media = {};
 var accepted = {};
 var TAG = 'IPC-VIDEO-CLIENT:';
-var host = 'https://dev.webrtc.nu';
+var host = 'https://pabx.hostname';
 IPCortex.PBX.Auth.setHost(host);
 
 function processFile(file) {
@@ -44,7 +44,7 @@ function processContact(contact) {
 	}
 	/* Create online contact */
 	if ( contact.canChat ) {
-		/* Clone a pre-built template to reduce DOM faffige */
+		/* Clone a pre-built template to reduce DOM faffage */
 		var clone = document.getElementById('contact-clone').cloneNode(true);
 		clone.id = 'c' + contact.cID;
 		clone.firstChild.nodeValue = contact.name;
